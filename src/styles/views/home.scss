@@ -1,0 +1,21 @@
+@use '../variables' as *;
+
+.home {
+   .masthead {
+      h1 {
+         color: $active;
+         font-size: 2rem;
+         font-family: 'Retron2000', sans-serif;
+         font-weight: 900;
+
+         .title-top {
+            font-size: 1.5rem;
+            font-weight: 100;
+         }
+
+         .title-mid {
+            font-size: 3rem;
+         }
+      }
+   }
+}

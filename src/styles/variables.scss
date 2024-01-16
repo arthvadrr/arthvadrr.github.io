@@ -1,0 +1,24 @@
+/**
+* Colors
+*/
+$background: #1f191f;
+$foreground: #89669f;
+$active: #c3b1ce;
+
+/**
+* Header
+*/
+$nav-links: (
+   home: #ff91f8,
+   projects: #b2ffae,
+   blog: #ffffff,
+   about: #8ffff6,
+   contact: #ff93b7,
+);
+
+/**
+* Utility
+*/
+$img_box_shadow:
+   0 19px 38px rgba(0, 0, 0, 0.3),
+   0 15px 12px rgba(0, 0, 0, 0.22);
