@@ -1,0 +1,23 @@
+@use 'variables' as *;
+
+html {
+   font-size: 18px;
+
+   body {
+      display: flex;
+      justify-content: center;
+      position: relative;
+      min-height: 100vh;
+      margin: 0;
+      background-color: $background;
+      font-family: 'Montserrat', sans-serif;
+
+      & * {
+         box-sizing: border-box;
+      }
+
+      #root {
+         max-width: 1200px;
+      }
+   }
+}
