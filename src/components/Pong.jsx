@@ -94,7 +94,7 @@ const Pong = () => {
 
       const gameLoop = () => {
          // Check if user scored
-         if (ball.x - 10 > canvas.current.width) {
+         if (ball.x > canvas.current.width) {
             setIsPlaying(false);
 
             /**
@@ -115,7 +115,7 @@ const Pong = () => {
                speed: 3 + level * 0.5,
                directionX: 1,
                directionY: 0.5,
-               color: '#000000',
+               color: '#FF35BC',
             }));
 
             setLeftPaddle((prevPaddle) => ({
@@ -143,7 +143,7 @@ const Pong = () => {
          /**
           * Check if player loses
           */
-         if (ball.x + 10 < 0) {
+         if (ball.x < 0) {
             setIsPlaying(false);
             setLives((prevLives) => prevLives - 1);
             setBall({
@@ -152,7 +152,7 @@ const Pong = () => {
                speed: 3,
                directionX: 1,
                directionY: 0.5,
-               color: '#000000',
+               color: '#FF35BC',
             });
 
             if (lives > 0) {
@@ -241,7 +241,7 @@ const Pong = () => {
           */
          // prettier-ignore
          if (
-            ball.y + 10 > canvas.current.height || 
+            ball.y > canvas.current.height || 
             ball.y - 10 < 0
          ) {
             ball.directionY = -ball.directionY;
@@ -253,37 +253,35 @@ const Pong = () => {
          /**
           * Update right paddle position to follow the ball
           */
-         if (ball.x > canvas.current.width / 2 && ball.directionX > 0) {
-            const deltaY = ball.y - (rightPaddle.y + rightPaddle.height / 2);
-            const desiredY = rightPaddle.y + deltaY * rightPaddle.speed;
+         const middleY = canvas.current.height / 2 - rightPaddle.height / 2;
+         const targetY =
+            ball.x > canvas.current.width / 2 && ball.directionX > 0 ? ball.y - rightPaddle.height / 2 : middleY;
 
-            // Ensure the paddle does not exceed the max speed
-            rightPaddle.y =
-               Math.abs(desiredY - rightPaddle.y) > rightPaddle.maxSpeed
-                  ? rightPaddle.y + Math.sign(desiredY - rightPaddle.y) * rightPaddle.maxSpeed
-                  : desiredY;
-         } else {
-            // Move the right paddle towards the middle when the ball is in the left half
-            const middleY = canvas.current.height / 2 - rightPaddle.height / 2;
-            const deltaY = middleY - (rightPaddle.y + rightPaddle.height / 2);
-            const desiredY = rightPaddle.y + deltaY * rightPaddle.speed;
+         const deltaY = targetY - (rightPaddle.y + rightPaddle.height / 2);
+         const desiredY = rightPaddle.y + deltaY * rightPaddle.speed;
 
-            // Ensure the paddle does not exceed the max speed
-            rightPaddle.y =
-               Math.abs(desiredY - rightPaddle.y) > rightPaddle.maxSpeed
-                  ? rightPaddle.y + Math.sign(desiredY - rightPaddle.y) * rightPaddle.maxSpeed
-                  : desiredY;
-         }
+         // Ensure the paddle does not exceed the max speed
+         rightPaddle.y =
+            Math.abs(desiredY - rightPaddle.y) > rightPaddle.maxSpeed
+               ? rightPaddle.y + Math.sign(desiredY - rightPaddle.y) * rightPaddle.maxSpeed
+               : desiredY;
+
+         // /**
+         //  * Draw the ball
+         //  */
+         // ctx.fillStyle = ball.color;
+         // ctx.beginPath();
+         // ctx.arc(ball.x, ball.y, 10, 0, 2 * Math.PI);
+         // ctx.fill();
+         // ctx.lineWidth = 6;
+         // ctx.strokeStyle = '#FF35BC';
+         // ctx.stroke();
 
          /**
           * Draw the ball
           */
-         ctx.fillStyle = ball.color;
-         ctx.beginPath();
-         ctx.arc(ball.x, ball.y, 10, 0, 2 * Math.PI);
-         ctx.fill();
-         ctx.lineWidth = 6;
-         ctx.strokeStyle = '#FF35BC';
+         ctx.fillStyle = '#FF35BC';
+         ctx.fillRect(ball.x, ball.y, 20, 20);
          ctx.stroke();
 
          animationID = requestAnimationFrame(gameLoop);
@@ -325,7 +323,7 @@ const Pong = () => {
          ></canvas>
          <div className="net"></div>
          <div className="background">
-            <video
+            {/* <video
                ref={videoRef}
                autoPlay
                loop
@@ -336,7 +334,7 @@ const Pong = () => {
             >
                <source src="/video/tunnel.mp4" type="video/mp4" />
                Your browser does not support the video tag.
-            </video>
+            </video> */}
          </div>
          <div className="overlay">
             <div className="lives">
