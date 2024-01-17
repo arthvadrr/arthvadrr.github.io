@@ -19,15 +19,14 @@ const getAudio = (path, volume, loop) => {
 };
 
 const sfx = {
-   paddle1: getAudio('/audio/pong/paddle1.mp3', 0.6),
-   paddle2: getAudio('/audio/pong/paddle2.mp3', 0.6),
+   paddle1: getAudio('/audio/pong/paddle1.mp3', 0.5),
+   paddle2: getAudio('/audio/pong/paddle2.mp3', 0.5),
    bounce: getAudio('/audio/pong/bounce.mp3', 1),
-   //music: getAudio('/audio/pong/levelmusic1.mp3', 0.6, true),
-   music: null,
+   music: getAudio('/audio/pong/levelmusic1.mp3', 0.2, true),
    start: getAudio('/audio/pong/gamestart.mp3', 1),
-   lost: getAudio('/audio/pong/lost.mp3', 1),
-   win: getAudio('/audio/pong/win.mp3', 1),
-   gameOver: getAudio('/audio/pong/gameover.mp3', 1),
+   lost: getAudio('/audio/pong/lost.mp3', 0.8),
+   win: getAudio('/audio/pong/win.mp3', 0.8),
+   gameOver: getAudio('/audio/pong/gameover.mp3', 0.5),
 };
 
 const getRandomColor = () => {
