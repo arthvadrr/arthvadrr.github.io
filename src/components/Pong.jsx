@@ -241,8 +241,8 @@ const Pong = () => {
           */
          // prettier-ignore
          if (
-            ball.y > canvas.current.height || 
-            ball.y - 10 < 0
+            ball.y + 10 > canvas.current.height || 
+            ball.y < 0
          ) {
             ball.directionY = -ball.directionY;
             sfx.bounce.pause();
