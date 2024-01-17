@@ -16,9 +16,7 @@ const Home = () => {
                <div className="title-top">Hey there!</div>
                <div className="title-mid">Welcome to the Trash Heap!</div>
             </h1>
-            <div className="hero">
-               <img src="animated/tp-peel.webp" />
-            </div>
+            <div className="hero"></div>
          </div>
          <div className="short-links">
             <NavLink to={'/blog'}>My Content</NavLink>
