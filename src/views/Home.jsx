@@ -1,29 +1,26 @@
-import { useState } from 'react';
-import { NavLink } from 'react-router-dom';
-import Pong from '../components/Pong';
+import Socials from '../components/Socials.jsx';
+import PageTitle from '../components/PageTitle.jsx';
+import HomeLinks from '../components/HomeLinks.jsx';
 
 const Home = () => {
-   const [gameStarted, setGameStarted] = useState(false);
-
-   const startGame = () => {
-      setGameStarted(true);
-   };
-
    return (
-      <article id="home-view" className="home">
-         <div className="masthead">
-            <h1>
-               <div className="title-top">Hey there!</div>
-               <div className="title-mid">Welcome to the Trash Heap!</div>
-            </h1>
-            <div className="hero"></div>
-         </div>
-         <div className="short-links">
-            <NavLink to={'/blog'}>My Content</NavLink>
-            <NavLink to={'/contact'}>Want to Chat?</NavLink>
-         </div>
-         <Pong />
-      </article>
+      <>
+         <PageTitle title="TrshPuppy" color="#ff91f8" />
+         <article id="home-view" className="home view">
+            <section className="welcome">
+               <div>
+                  <h2>Welcome to the Trash Heap.</h2>
+                  <p>
+                     Here you'll find various writeups and projects I've been working on, all related to cybersecurity
+                     and coding!
+                  </p>
+                  <Socials />
+               </div>
+               <div className="hero hero-welcome" aria-hidden="true"></div>
+            </section>
+            <HomeLinks />
+         </article>
+      </>
    );
 };
 

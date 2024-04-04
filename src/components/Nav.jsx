@@ -1,21 +1,20 @@
-import { useReducer } from 'react';
 import { NavLink } from 'react-router-dom';
-import initialState from '../initialState';
-import reducer from '../reducer';
+
 //Nav Item SVGs
 import CoffeeSVG from './svg/Coffee';
 import FlaskSVG from './svg/Flask';
 import BlogSVG from './svg/Blog';
 import HomeSVG from './svg/Home';
 import PawSVG from './svg/Paw';
+import DigitalClock from './DigitalClock.jsx';
+import SiteBrand from './SiteBrand.jsx';
 
 const Nav = () => {
-   const [state, dispatch] = useReducer(reducer, initialState);
-
    const playClickSound = () => {
       const audio = new Audio('/audio/click.mp3');
       audio.volume = 0.3;
-      audio.play();
+
+      if (audio) audio.play().finally();
    };
 
    return (
@@ -82,6 +81,10 @@ const Nav = () => {
                </NavLink>
             </li>
          </ul>
+         <div className="nav-meta">
+            <DigitalClock />
+            <SiteBrand />
+         </div>
       </nav>
    );
 };
