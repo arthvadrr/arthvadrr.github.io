@@ -9,7 +9,7 @@ import Contact from '../views/Contact';
 
 const Router = createHashRouter([
    {
-      path: '/',
+      path: '',
       element: <Wrapper View={Home} />,
       errorElement: <NotFound />,
    },
